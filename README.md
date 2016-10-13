@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Examination assignment 3 - Vagrant Box
 
 This is the repo for the examination 3 in the course. The virtual machine (hashicorp/precise32) will have the following (relevant) packages installed:
@@ -44,3 +45,7 @@ You should have multiple terminals open at the same time. One running the `npm r
 
 ## Intructions for the examination assignment
 The instructions are in the README-file in the examination/client-folder
+=======
+# dekes03-examination-3
+Examination 3 for Daniel Ekerot, freestanding
+>>>>>>> 444a2a353fd473f5c567cd2bad224c5065913336
