@@ -1,11 +1,9 @@
 let clock = require('./modules/clock');
-
-clock.clock();
-
 const ApplicationManager = require('./modules/applicationManager')
 
 let applicaitonManager = new ApplicationManager();
 
+clock.clock();
 appendIcon();
 
 function appendIcon(){
@@ -15,13 +13,13 @@ function appendIcon(){
     applicaitonManager.getApplicationData().forEach(appData =>{
 
         let list = document.createElement('li');
-        let aTag = document.createElement('a');
         let imgTag = document.createElement('img');
-        imgTag.setAttribute('src', '/image/memoryicon.png');
+        imgTag.setAttribute('src', '/image/chaticon.png');
+        imgTag.setAttribute('class', appData.name);
         list.appendChild(imgTag);
-        list.appendChild(aTag);
         fragment.appendChild(list);
 
     });
     ul.appendChild(fragment);
 }
+
