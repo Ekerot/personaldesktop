@@ -4,7 +4,7 @@
 
 const ChatApp  = require('./chat/chat');
 
-const Memory = require('./memory');
+const Memory = require('./memorygame/memory');
 
 module.exports = [
     new ChatApp(),

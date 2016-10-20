@@ -11,14 +11,7 @@ class ChatApp {
     // }
 
     getName() {
-        return 'Chat';
-    }
-
-    getTrayIcon() {
-        return {
-            icon: '/image/chaticon.png'
-        }
-
+        return 'chat';
     }
 
     /*    onCreate(){

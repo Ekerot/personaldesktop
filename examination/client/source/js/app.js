@@ -14,7 +14,7 @@ function appendIcon(){
 
         let list = document.createElement('li');
         let imgTag = document.createElement('img');
-        imgTag.setAttribute('src', '/image/chaticon.png');
+        imgTag.setAttribute('src', '/image/' + appData.name + ".png");
         imgTag.setAttribute('class', appData.name);
         list.appendChild(imgTag);
         fragment.appendChild(list);
@@ -22,4 +22,6 @@ function appendIcon(){
     });
     ul.appendChild(fragment);
 }
+
+
 

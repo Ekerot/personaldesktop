@@ -7,15 +7,9 @@
 class Memory {
 
     getName() {
-        return 'Memory';
-    }
-
-    getTrayIcon() {
-        return {
-            icon: "/image/memoryicon.png"
-        }
-
+        return 'memory';
     }
 }
-
 module.exports = Memory;
+
+

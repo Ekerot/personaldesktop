@@ -3,30 +3,29 @@
  * Created by ekerot on 2016-10-15.
  */
 
-window.onload = addListeners();
-var x_pos = 0,
-    y_pos = 0;
-
-function addListeners() {
-    document.getElementsByClassName('window-ui').addEventListener('mousedown', mouseDown, false);
-    window.addEventListener('mouseup', mouseUp, false);
+function drag_start(event) {
+    var style = window.getComputedStyle(event.target, null);
+    event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY) + ',' + event.target.getAttribute('data-item'));
 }
 
-function mouseUp() {
-    window.removeEventListener('mousemove', divMove, true);
+function drag_over(event) {
+    event.preventDefault();
+    return false;
 }
 
-function mouseDown(e) {
-    var div = document.getElementsByClassName('window-ui');
-    console.log('Tryckt')
-    x_pos = e.clientX - div.offsetLeft;
-    y_pos = e.clientY - div.offsetTop;
-    window.addEventListener('mousemove', divMove, true);
+function drop(event) {
+    var offset = event.dataTransfer.getData("text/plain").split(',');
+    var dm = document.getElementsByClassName('window-ui');
+    dm[parseInt(offset[2])].style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+    dm[parseInt(offset[2])].style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+    event.preventDefault();
+    return false;
 }
 
-function divMove(e) {
-    var div = document.getElementsByClassName('window-ui');
-    div.style.position = 'absolute';
-    div.style.top = (e.clientY - y_pos) + 'px';
-    div.style.left = (e.clientX - x_pos) + 'px';
+var dm = document.getElementsByClassName('window-ui');
+for (var i = 0; i < dm.length; i++) {
+    dm[0].addEventListener('dragstart', drag_start, false);
+    document.body.addEventListener('dragover', drag_over, false);
+    document.body.addEventListener('drop', drop, false);
 }
+

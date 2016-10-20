@@ -3,58 +3,48 @@
 /**
  * Created by ekerot on 2016-10-11.
  */
-
 const applications = require('../application/index');
+const memoryGame = require('../application/memorygame/memoryGame');
 
 class ApplicationManager {
     getApplicationData() {
         return applications.map(app => {
-            return {name: app.getName(), trayIcon: app.getTrayIcon()}
+            return {name: app.getName()}
         });
     }
 }
 
-const template = document.querySelector('#windows-position'),
-    windowTemplate = document.querySelector('.template'),
-    firstElement = document.importNode(windowTemplate.content.firstElementChild, true);
+const container = document.getElementById('window-position');
+const template = document.getElementById('template');
 
 window.onload = function createWindow() {
     let imgTag = document.querySelectorAll('li > img');
-    Array.prototype.forEach.call(imgTag, function(node) {
-        node.addEventListener('click', function () {
+    Array.prototype.forEach.call(imgTag, function (node) {
+        node.addEventListener('click', function (event) {
+            let element = document.cloneNode(template.content)
+            container.appendChild(element);
 
-            document.body.appendChild(firstElement);
+            if(event.target.classList.contains('Memory')){
+                new memoryGame(4,4);
+            }
 
+            console.log(event.target)
+            console.log("Du klickade")
+
+            closeWindow();
         });
     });
+};
 
-    let x_pos = 0,
-        y_pos = 0;
-    let windowUi = document.getElementsByClassName('frame');
-    window.onload = addListeners();
+function closeWindow(node){
+    let windowbutton = document.querySelector('.btn');
+    windowbutton.addEventListener('click', function(){
 
-    function addListeners() {
-        window.addEventListener('mousedown', mouseDown, false);
-        window.addEventListener('mouseup', mouseUp, false);
-    }
+        document.body.removeChild(document.querySelector('.window-ui'))
+        console.log('klick,klick');
 
-    function mouseUp() {
-        window.removeEventListener('mousemove', divMove, true);
-    }
+    })
 
-    function mouseDown(e) {
-        let div = document.getElementsByClassName('frame');
-        x_pos = e.clientX - div.offsetLeft;
-        y_pos = e.clientY - div.offsetTop;
-        window.addEventListener('mousemove', divMove, true);
-    }
-
-    function divMove(e) {
-        let div = document.getElementsByClassName('frame');
-        div.style.position = 'absolute';
-        div.style.top = (e.clientY - y_pos) + 'px';
-        div.style.left = (e.clientX - x_pos) + 'px';
-    }
 
 }
 

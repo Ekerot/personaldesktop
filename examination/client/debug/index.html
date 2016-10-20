@@ -2,22 +2,27 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="stylesheet/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet/memorystyle.css">
     <meta charset="UTF-8">
     <title>Personal desktop</title>
 </head>
 
 <body>
 
-<template class="template">
-    <div class="window-ui">
+<template id="template">
+    <div class="window-ui" draggable="true" data-item="0">
         <div class="frame">
-            <span class="btn-1"></span>
-            <span class="btn-2"></span>
-            <span class="btn-3"></span>
+            <a href="#" class="btn"><span class="btn-1"></span></a>
         </div>
-        <div class="applications"></div>
+        <div id="application">
+            <template id="memory-container">
+                <a href="#"><img src="/image/memoryimages/0.png" alt="memory tile"/></a>
+            </template>
+        </div>
     </div>
 </template>
+
+<div class="window-position"></div>
 
 <nav>
     <div class="nav-bar"></div>
@@ -25,8 +30,6 @@
     </ul>
     <time class="time"></time>
 </nav>
-
-<div class="window-position"></div>
 
 <script src="./javascript/build.js"></script>
 </body>

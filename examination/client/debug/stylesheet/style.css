@@ -49,15 +49,17 @@ body{
 }
 
 .window-ui {
-    padding: 20px 0 0;
+    padding: 20px 20px 20px;
+    padding-top: 80px;
     border-radius: 3px;
     border-bottom: 2px solid #ccc;
     background: #ddd;
-    display: inline-block;
-    position: relative;
+    position: absolute;
+    left: 200px;
+    top: 100px;
     line-height: 0;
     height: 250px;
-    width: 400px;
+    width: 250px;
     background-color: #f6f6f6;
 }
 
@@ -77,18 +79,6 @@ body{
 
 }
 
-.window-ui .btn-2 {
-
-    background-color: #FDD800;
-
-}
-
-.window-ui .btn-3 {
-
-    background-color: #5AC05A;
-
-}
-
 li{
     display: inline;
 }
@@ -98,7 +88,7 @@ img{
     width: 60px;
 }
 
-img:hover{
+.nav-list img:hover{
     height: 80px;
     width: 80px;
 }
