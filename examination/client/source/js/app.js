@@ -13,9 +13,11 @@ function appendIcon(){
     applicaitonManager.getApplicationData().forEach(appData =>{
 
         let list = document.createElement('li');
+        let a = document.createElement('a');
         let imgTag = document.createElement('img');
         imgTag.setAttribute('src', '/image/' + appData.name + ".png");
         imgTag.setAttribute('class', appData.name);
+        imgTag.appendChild(a);
         list.appendChild(imgTag);
         fragment.appendChild(list);
 

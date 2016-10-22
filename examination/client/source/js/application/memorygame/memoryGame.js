@@ -2,7 +2,7 @@
  * Created by ekerot on 2016-10-19.
  */
 
-module.exports = function(rows, columns) {
+module.exports = function(rows, columns, index) {
     let i;
     let a;
     let tiles = [];
@@ -14,8 +14,8 @@ module.exports = function(rows, columns) {
 
     tiles = getPicture(rows,columns)
 
-    let container = document.getElementById('application');
-
+    document.getElementById('application').setAttribute('id', 'application' + index);
+    let container = document.querySelector('#application'+ index);
     let template = document.querySelectorAll('#memory-container')[0].content.firstElementChild;
 
     tiles.forEach(function(tile, index) {

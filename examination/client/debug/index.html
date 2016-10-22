@@ -2,7 +2,6 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="stylesheet/style.css">
-    <link rel="stylesheet" type="text/css" href="stylesheet/memorystyle.css">
     <meta charset="UTF-8">
     <title>Personal desktop</title>
 </head>
@@ -10,13 +9,18 @@
 <body>
 
 <template id="template">
-    <div class="window-ui" draggable="true" data-item="0">
+    <div class="window-ui">
         <div class="frame">
             <a href="#" class="btn"><span class="btn-1"></span></a>
         </div>
         <div id="application">
             <template id="memory-container">
                 <a href="#"><img src="/image/memoryimages/0.png" alt="memory tile"/></a>
+            </template>
+            <template id="chat-container">
+                <textarea id="recive" rows="15" cols="35"></textarea>
+                <textarea id="send" cols="35"></textarea>
+                <a><input type="text" class="username" placeholder="Enter username"></a>
             </template>
         </div>
     </div>

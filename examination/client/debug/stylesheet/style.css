@@ -50,7 +50,7 @@ body{
 
 .window-ui {
     padding: 20px 20px 20px;
-    padding-top: 80px;
+    padding-top: 50px;
     border-radius: 3px;
     border-bottom: 2px solid #ccc;
     background: #ddd;
@@ -58,8 +58,8 @@ body{
     left: 200px;
     top: 100px;
     line-height: 0;
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
     background-color: #f6f6f6;
 }
 
@@ -91,4 +91,24 @@ img{
 .nav-list img:hover{
     height: 80px;
     width: 80px;
+}
+
+.reciving{
+
+}
+
+.send{
+
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.removed{
+    visibility: hidden;
+}
+
+#memory-container{
+    height: 50%;
 }
