@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Created by ekerot on 2016-10-19.
  */
@@ -107,3 +109,8 @@ module.exports = function(rows, columns, index) {
     }
 
 }
+
+
+
+
+

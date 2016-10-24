@@ -8,25 +8,7 @@
 
 <body>
 
-<template id="template">
-    <div class="window-ui">
-        <div class="frame">
-            <a href="#" class="btn"><span class="btn-1"></span></a>
-        </div>
-        <div id="application">
-            <template id="memory-container">
-                <a href="#"><img src="/image/memoryimages/0.png" alt="memory tile"/></a>
-            </template>
-            <template id="chat-container">
-                <textarea id="recive" rows="15" cols="35"></textarea>
-                <textarea id="send" cols="35"></textarea>
-                <a><input type="text" class="username" placeholder="Enter username"></a>
-            </template>
-        </div>
-    </div>
-</template>
-
-<div class="window-position"></div>
+<div id="window-position"></div>
 
 <nav>
     <div class="nav-bar"></div>
@@ -34,6 +16,27 @@
     </ul>
     <time class="time"></time>
 </nav>
+
+<template id="template">
+    <div class="window-ui">
+        <div class="frame">
+            <a href="#" class="btn"><span class="btn-1"></span></a>
+        </div>
+        <div id="application">
+            <template id="memory-container">
+                <a href="#"><img class="tiles" src="/image/memoryimages/0.png" alt="memory tile"/></a>
+            </template>
+            <template id="chat-container">
+                <textarea id="recive" readonly></textarea>
+                <textarea id="send" ></textarea>
+                <a><input type="text" class="username hidden" placeholder="Enter username"></a>
+            </template>
+            <template id="draw-container">
+            </template>
+
+        </div>
+    </div>
+</template>
 
 <script src="./javascript/build.js"></script>
 </body>

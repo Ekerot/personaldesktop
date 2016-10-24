@@ -1,4 +1,4 @@
-
+'use strict';
 
 /**
  * Created by ekerot on 2016-10-11.
@@ -6,10 +6,11 @@
 const applications = require('../application/index');
 const memoryGame = require('../application/memorygame/memoryGame');
 const chat = require('../application/chat/chatApp');
-let nodes = [];
+const draw = require('../application/drawIt/drawIt');
+
 let index = 0;
 let startPositionTop = 100;
-let startPositionLeft = 200;
+let startPositionLeft = 100;
 
 class ApplicationManager {
     getApplicationData() {
@@ -28,102 +29,150 @@ window.onload = function beforeCreate() {
     Array.prototype.forEach.call(imgTag, function (node) {
         node.addEventListener('click', function () {
 
-            nodes.push({
-                name: imgTag.src - '.png',
-                startPositionTop: startPositionTop,
-                startPositionLeft: startPositionLeft,
-                index: index
-            });
-
             createWindow();
-
         });
     });
 };
 
 function createWindow(){
-    let clonedNode = element.cloneNode(true);
-    let div = clonedNode.firstElementChild.setAttribute('id', index.toString());
 
-    document.body.appendChild(clonedNode);
+    let clonedNode = element.cloneNode(true);
+    clonedNode.firstElementChild.setAttribute('id', index.toString());
+    let position = clonedNode.getElementById(index.toString());
+
+    if(!checkIfElementIsInsideBody(position)){
+        startPositionTop = 10;
+        startPositionLeft += 100;
+    }
+
+    position.style.top = startPositionTop + 'px';
+    position.style.left = startPositionLeft + 'px';
+
+    startPositionTop += 10;
+    startPositionLeft += 10;
+
+    position.style.zIndex = (1000 + index);
+
+    let div = document.getElementById('window-position');
+
+    div.appendChild(clonedNode);
 
     if(event.target.classList.contains('memory')) {
         new memoryGame(4,4,index);
     }
 
-
-    if(event.target.classList.contains('chat')){
+    else if(event.target.classList.contains('chat')){
         new chat(index);
+
     }
 
-    startPositionTop -= 10;
-    startPositionLeft -= 20;
+    else if(event.target.classList.contains('draw')){
+        position.style.width = 600 + 'px';
+        position.style.height = 600 + 'px';
+        new draw(index);
+
+    }
+
     index++;
-    windowConfigures();
+    configureWindow();
 }
 
-function windowConfigures() {
+function configureWindow() {
 
     window.onload = addListeners();
-    var offX;
-    var offY;
+    let offX;
+    let offY;
 
-    function addListeners(){
+    let allNodes = document.querySelectorAll('.window-ui');
+    var prev = false;
 
-        document.body.addEventListener('mousedown', mouseDown, false);
-        document.body.addEventListener('click', highLightwindow, false);
-        window.addEventListener('mouseup', mouseUp, false);
-
+    for (let i = 0; i < allNodes.length; i++) {
+        allNodes[i].onclick = function () {
+            if (prev) {
+                prev.style.zIndex = 1;
+            }
+            this.style.zIndex = 1000;
+            prev = this;
+        }
     }
 
-    function highLightwindow(e) {
 
-        let div =  document.getElementById(e.target.id.toString());
-        div.style.zIndex = '9999999'
+    function addListeners() {
 
-    }
+        let div;
 
-    function mouseUp()
-    {
-        window.removeEventListener('mousemove', divMove, true);
-    }
+        let allNodes = document.querySelectorAll('.window-ui');
 
-    function mouseDown(e){
-
-        let div = '';
-
-        nodes.forEach(function(node){
-        if(e.target.id.toString() === node.index.toString()) {
-            div =  document.getElementById(e.target.id.toString());
-            div.style.zIndex = '9999999'
+        for (let i = 0; i < allNodes.length; i++) {
+                div = document.getElementById(i.toString());
+                div.addEventListener('mousedown', mouseDown, false);
+                div.addEventListener('mouseup', mouseUp, false);
         }
 
-        else{
-            return;
+    }
+
+    function mouseUp() {
+
+        let div;
+
+        for (let i = 0; i < allNodes.length; i++) {
+            div = document.getElementById(i.toString());
+            div.removeEventListener('mousemove', divMove, true);
         }
-
-        });
-
-        offY= e.clientY-parseInt(div.offsetTop);
-        offX= e.clientX-parseInt(div.offsetLeft);
-        window.addEventListener('mousemove', divMove, true);
     }
 
-    function divMove(e){
-        let div = document.getElementById(e.target.id.toString());
-        div.style.position = 'absolute';
-        div.style.top = (e.clientY-offY) + 'px';
-        div.style.left = (e.clientX-offX) + 'px';
+    function mouseDown(e) {
+
+        let div;
+
+        for (let i = 0; i < allNodes.length; i++) {
+
+            if (document.getElementById(i.toString()).id == e.target.id) {
+                div = document.getElementById(i.toString());
+                offY = e.clientY - parseInt(div.offsetTop);
+                offX = e.clientX - parseInt(div.offsetLeft);
+                div.addEventListener('mousemove', divMove, true);
+            }
+
+        }
     }
 
-    function closeWindow(e){
-        let windowbutton = document.querySelector('.btn');
-        console.log(e.target)
-        let div = document.getElementById(e.target.id.toString())
-        startPositionLeft += 10;
-        startPositionTop += 10
+    function divMove(e) {
 
+        let div;
+
+        for (let i = 0; i < allNodes.length; i++) {
+
+            if (document.getElementById(i.toString()).id == e.target.id) {
+                div = document.getElementById(i.toString());
+
+                div.style.position = 'absolute';
+                div.style.top = (e.clientY - offY) + 'px';
+                div.style.left = (e.clientX - offX) + 'px';
+
+                e.preventDefault();
+            }
+        }
     }
+
+
+    for (let i = 0; i < allNodes.length; i++) {
+        allNodes[i].firstElementChild.firstElementChild.onclick = function () {
+            if (prev) {
+                allNodes[i].remove();
+                startPositionTop -= 10;
+                startPositionLeft -= 10;
+            }
+        }
+    }
+
+}
+
+function checkIfElementIsInsideBody() {
+
+    return startPositionTop < window.innerHeight;
 }
 
 module.exports = ApplicationManager;
+
+

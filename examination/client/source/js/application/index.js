@@ -6,9 +6,12 @@ const ChatApp  = require('./chat/chat');
 
 const Memory = require('./memorygame/memory');
 
+const Draw = require('./drawIt/draw');
+
 module.exports = [
     new ChatApp(),
-    new Memory()
+    new Memory(),
+    new Draw()
 ];
 
 
