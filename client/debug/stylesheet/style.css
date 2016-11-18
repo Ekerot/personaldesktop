@@ -1,0 +1,153 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: inline;
+    background-repeat: no-repeat;
+    background-image: url("/image/bakgrund.jpg");
+    background-size: cover;
+}
+
+.nav-bar {
+    position: relative;
+    list-style-type: none;
+    overflow: hidden;
+    height: 50px;
+    width: 100%;
+    background-color: #d1e8ff;
+    opacity:0.3;
+    position: fixed;
+    bottom: 0;
+    margin-left: -10px;
+}
+
+.time{
+    float: right;
+    position: absolute;
+    margin-bottom: 1.1%;
+    right: 2%;
+    color: white;
+    opacity:1;
+    font-family: "Helvetica Neue";
+    bottom: 5px;
+
+}
+
+.nav-list{
+    list-style: none;
+    margin: 20px;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+
+}
+
+.window-ui  .frame {
+    display: block;
+    height: 15px;
+    position: absolute;
+    top: 5px;
+    left: 1px;
+}
+
+.window-ui {
+    padding: 20px 20px 20px;
+    padding-top: 50px;
+    top: 10px;
+    left: 10px;
+    border-radius: 3px;
+    border-bottom: 2px solid #ccc;
+    position: absolute;
+    line-height: 0;
+    height: 300px;
+    width: 300px;
+    background: rgba(17, 17, 17, 0.4);
+    z-index: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white;
+
+}
+
+.window-ui span {
+    height: 8px;
+    width: 8px;
+    border-radius: 8px;
+    background-color: #eee;
+    border: 1px solid #dadada;
+    float: left;
+    margin: 0 0 0 4px;
+}
+
+.window-ui .btn-1 {
+
+    background-color: #ED594A;
+
+}
+
+li{
+    display: inline;
+}
+
+img{
+    height: 60px;
+    width: 60px;
+}
+
+.nav-list img:hover{
+    height: 80px;
+    width: 80px;
+}
+
+#recive{
+    height: 230px;
+    width: 280px;
+
+}
+
+#send{
+    height: 30px;
+    width: 280px;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.removed{
+    visibility: hidden;
+}
+
+img.tiles{
+    padding: 2.3px;
+    height: 70px;
+    width: 70px;
+}
+
+.picturepanel{
+    height: 500px;
+    width: 595px;
+    background-color: #eeeeee;
+}
+
+.toolbar{
+    color: #eeeeee;
+    width: 595px;
+    height: 100px;
+    bottom: 8px;
+}
+
+#brush{
+    float: left;
+    margin:auto;
+}
+#tile-container{
+    width: 295px;
+    height: 295px;
+}
+
+

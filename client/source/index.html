@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="stylesheet/style.css">
+    <meta charset="UTF-8">
+    <title>Personal desktop</title>
+</head>
+
+<body>
+
+<div id="window-position"></div>
+
+<nav>
+    <div class="nav-bar"></div>
+    <ul class="nav-list">
+    </ul>
+    <time class="time"></time>
+</nav>
+
+<template id="template">
+    <div class="window-ui">
+        <div class="frame">
+            <a href="#" class="btn"><span class="btn-1"></span></a>
+        </div>
+        <div id="application">
+            <template id="memory-container">
+                    <a href="#"><img class="tiles" src="/image/memoryimages/0.png" alt="memory tile"/></a>
+
+            </template>
+            <template id="chat-container">
+                <textarea id="recive" readonly></textarea>
+                <textarea id="send" ></textarea>
+                <a><input type="text" class="username hidden" placeholder="Enter username"></a>
+            </template>
+            <template id="draw-container">
+                <div class="picturepanel"></div>
+                <div class="toolbar">
+                    <div id="color"><p>Change color: </p><input type="color" id="setcolor" ></div>
+                    <div id="brush"><p>Change brushsize: </p><select id="brushsize" >
+                        <option value="2">2px</option>
+                        <option value="3">3px</option>
+                        <option value="5">5px</option>
+                        <option value="8">8px</option>
+                        <option value="12">12px</option>
+                        <option value="25">25px</option>
+                        <option value="35">35px</option>
+                    </select></div>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
+
+<script src="./javascript/build.js"></script>
+</body>
+</html>
